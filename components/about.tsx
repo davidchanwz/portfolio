@@ -24,7 +24,7 @@ export function About() {
         <motion.section
             ref={ref}
             id="about"
-            className="container pt-8 pb-36 sm:pt-16 sm:pb-54 mx-auto scroll-mt-28 relative"
+            className="container pt-2 pb-36 sm:pt-16 sm:pb-54 mx-auto scroll-mt-28 relative"
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
