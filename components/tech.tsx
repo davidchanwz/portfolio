@@ -67,7 +67,7 @@ const TechGrid = ({ title, items }: { title: string, items: typeof technologies.
 )
 
 export function Tech() {
-    const { ref } = useSectionInView("Tech", 0.5)
+    const { ref } = useSectionInView("Tech", 0.3)
 
     return (
         <section
