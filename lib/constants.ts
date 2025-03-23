@@ -109,7 +109,7 @@ export const projects = [
         description: "Mobile app for generating tailored meal plans using AI and Retrieval Augmented Generation.",
         longDescription: "Smart Pantry Buddy is an AI-powered mobile app that helps users create personalized, health-conscious meal plans based on their pantry inventory and dietary preferences. Using a combination of LlamaIndex, Retrieval-Augmented Generation (RAG), and vector search, the app retrieves relevant recipes by matching available ingredients to a vector database of recipe embeddings. \n\nIt integrates OCR technology to scan grocery receipts and automatically update pantry data, while also pulling in nutritional information from external APIs. Through a React Native interface and FastAPI backend, Smart Pantry Buddy delivers tailored meal suggestions by combining structured (SQL), unstructured (API), and vector-based data sources, offering users a seamless, intelligent meal-planning experience.",
         thumbnail: "/projects/smartpantry.png",
-        detailImage: "/projects/smartpantry.png",
+        detailImage: "/projects/smartpantry-detail.png",
         links: {
             github: "https://github.com/lionsee77/smartpantry",
         },
