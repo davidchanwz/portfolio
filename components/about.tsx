@@ -8,18 +8,11 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useSectionInView } from "@/lib/hooks"
 import { scrollToSection } from "@/lib/utils"
+import { TypeAnimation } from 'react-type-animation';
 
 export function About() {
     const roles = ["software engineer", "data analyst", "web developer"]
-    const [roleIndex, setRoleIndex] = useState(0)
     const { ref } = useSectionInView("About", 0.5)
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setRoleIndex((current) => (current + 1) % roles.length)
-        }, 3000)
-        return () => clearInterval(interval)
-    }, [])
 
     return (
         <motion.section
@@ -54,18 +47,18 @@ export function About() {
                         >
                             <h2 className="text-2xl font-bold flex flex-col">
                                 <span>Hi there, I'm David. I'm a</span>
-                                <span className="w-full ">
-                                    <AnimatePresence mode="wait">
-                                        <motion.span
-                                            key={roleIndex}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -20 }}
-                                            className="inline-block min-w-[160px] bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-400 bg-clip-text text-transparent font-bold"
-                                        >
-                                            {roles[roleIndex]}
-                                        </motion.span>
-                                    </AnimatePresence>
+                                <span className="h-[32px] flex items-center justify-center">
+                                    <TypeAnimation
+                                        sequence={[
+                                            'software engineer', 2000,
+                                            'data analyst', 2000,
+                                            'web developer', 2000,
+                                        ]}
+                                        wrapper="span"
+                                        speed={50}
+                                        repeat={Infinity}
+                                        className="inline-block bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-400 bg-clip-text text-transparent font-bold"
+                                    />
                                 </span>
                             </h2>
                             <p className="text-muted-foreground">
