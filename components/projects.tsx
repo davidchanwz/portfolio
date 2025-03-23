@@ -84,7 +84,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                                 {(project.iconLists || []).map((icon, index) => (
                                     <div
                                         key={index}
-                                        className="border border-white/[.2] rounded-full bg-black/5 w-9 h-9 flex justify-center items-center"
+                                        className="border border-primary/[.2] rounded-full w-9 h-9 bg-secondary flex justify-center items-center"
                                         style={{
                                             transform: `translateX(-${5 * index + 2}px)`,
                                         }}
