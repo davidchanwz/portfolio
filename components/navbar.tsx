@@ -38,6 +38,7 @@ const routes: RouteProps[] = [
     { href: "#tech", label: "Tech" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
+
 ] as const
 
 export function Navbar() {

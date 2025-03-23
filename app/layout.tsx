@@ -6,6 +6,7 @@ import StarsWrapper from "@/components/stars-background";
 import { Navbar } from "@/components/navbar";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import { LoadingScreen } from "@/components/loading-screen";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
             <div className="relative z-20">
               {children}
             </div>
+            <Footer />
           </ActiveSectionContextProvider>
         </ThemeProvider>
       </body>
