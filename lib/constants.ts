@@ -17,7 +17,7 @@ export const experiences = [
         iconBg: "#ffff",
         date: "Aug 2024 - Present",
         points: [
-            "Teaching support for BT2102 - Data Management and Visualisation and CP2106 - Independent Software Development Project (Orbital.",
+            "Teaching support for BT2102 - Data Management and Visualisation.",
             "Teaching support for CP2106 - Independent Software Development Project (Orbital).",
         ],
     },
@@ -81,7 +81,9 @@ export const projects = [
             "/tech/sklearn.png",
             "/tech/sqlalchemy.png",
             "/tech/pandas.png",
-            "/tech/supabase.png"
+            "/tech/numpy.png",
+            "/tech/supabase.png",
+
         ]
     },
     {
