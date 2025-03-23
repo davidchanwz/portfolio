@@ -4,18 +4,16 @@ import { motion } from "framer-motion"
 import { useSectionInView } from "@/lib/hooks"
 import { Button } from "@/components/ui/button"
 import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+    Dialog,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Github, ExternalLink } from "lucide-react"
+import { useEffect } from "react"
 
 const formatDescription = (text: string) => {
     return text.split('\n').map((line, i) => (
@@ -42,7 +40,8 @@ const projects = [
             "/tech/python.png",
             "/tech/supabase.png",
             "/tech/huggingface.svg",
-            "/tech/docker.png"
+            "/tech/docker.png",
+            "/tech/heroku.png"
         ]
     },
     {
@@ -110,10 +109,23 @@ const projects = [
     // Add more projects here
 ]
 
+function preloadImage(src: string) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+    });
+}
+
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+    useEffect(() => {
+        preloadImage(project.detailImage);
+    }, [project.detailImage]);
+
     return (
-        <AlertDialog>
-            <AlertDialogTrigger asChild>
+        <Dialog>
+            <DialogTrigger asChild>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -173,18 +185,20 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                         </div>
                     </div>
                 </motion.div>
-            </AlertDialogTrigger>
-            <AlertDialogContent className="sm:max-w-[700px] h-[80vh] flex flex-col p-0">
+            </DialogTrigger>
+            <DialogContent className="flex flex-col p-0 h-[70vh] sm:h-[80vh] [&>button]:cursor-pointer">
                 <div className="px-6 py-4 border-b">
-                    <AlertDialogTitle>{project.title}</AlertDialogTitle>
+                    <DialogHeader>
+                        <DialogTitle>{project.title}</DialogTitle>
+                    </DialogHeader>
                 </div>
 
-                <ScrollArea className="flex-1 px-3 h-3/5">
-                    <div className="rounded-lg mb-4 aspect-auto">
+                <ScrollArea className="flex-1 px-3 h-1/2">
+                    <div className="rounded-lg mb-4">
                         <img
                             src={project.detailImage}
                             alt={project.title}
-                            className="object-cover w-full h-full px-20"
+                            className="object-cover w-full h-full"
                         />
                     </div>
                     <div className="space-y-2 text-muted-foreground text-sm">
@@ -199,8 +213,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                 </ScrollArea>
 
                 <div className="px-6 py-4 border-t">
-                    <AlertDialogFooter className="sm:justify-end gap-2 !flex-row">
-                        <AlertDialogCancel className="mt-0 cursor-pointer">Close</AlertDialogCancel>
+                    <DialogFooter className="justify-end gap-2 !flex-row">
                         {project.links.github && (
                             <Button asChild variant="default">
                                 <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
@@ -217,15 +230,22 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                                 </a>
                             </Button>
                         )}
-                    </AlertDialogFooter>
+                    </DialogFooter>
                 </div>
-            </AlertDialogContent>
-        </AlertDialog>
+            </DialogContent>
+        </Dialog>
     )
 }
 
 export function Projects() {
     const { ref } = useSectionInView("Projects", 0.5)
+
+    useEffect(() => {
+        // Preload all detail images when the component mounts
+        projects.forEach(project => {
+            preloadImage(project.detailImage);
+        });
+    }, []);
 
     return (
         <section

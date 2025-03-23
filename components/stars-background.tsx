@@ -3,9 +3,11 @@
 import { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import * as THREE from "three"
+import { useTheme } from "next-themes"
 
 function Stars() {
     const ref = useRef<THREE.Points>(null!)
+    const { theme } = useTheme()
 
     const positions = useMemo(() => {
         const positions = new Float32Array(6000)
@@ -45,7 +47,7 @@ function Stars() {
                 sizeAttenuation={true}
                 transparent={true}
                 opacity={0.8}
-                color="white"
+                color={theme === 'dark' ? 'white' : '#333333'}
             />
         </points>
     )

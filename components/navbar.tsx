@@ -77,7 +77,7 @@ export function Navbar() {
             variants={navbarVariants}
         >
             {/* Logo */}
-            <motion.a href="/" className="flex items-center font-bold text-lg pl-2 mr-[-80px]" variants={itemVariants}>
+            <motion.a href="/" className="flex items-center font-bold text-lg pl-2 mr-[-120px]" variants={itemVariants}>
                 davidchanwz.com
             </motion.a>
 
