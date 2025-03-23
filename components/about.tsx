@@ -141,7 +141,7 @@ export function About() {
                     repeat: Infinity,
                     repeatType: "reverse"
                 }}
-                className="absolute bottom-8 sm:bottom-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
+                className="absolute mb-4 sm:mb-0 bottom-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
             >
                 <motion.p
                     initial={{ opacity: 0 }}
