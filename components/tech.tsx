@@ -208,7 +208,7 @@ export function Tech() {
         <section
             ref={ref}
             id="tech"
-            className="container py-12 mx-auto max-w-[60rem] scroll-mt-28 space-y-8"
+            className="container py-12 mx-auto max-w-[60rem] scroll-mt-28 space-y-8 "
         >
             <motion.div
                 initial={{ opacity: 0, y: 100 }}

@@ -7,11 +7,12 @@ import { GithubIcon, LinkedinIcon, FileTextIcon, ArrowDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useSectionInView } from "@/lib/hooks"
+import { scrollToSection } from "@/lib/utils"
 
 export function About() {
     const roles = ["software engineer", "data analyst", "web developer"]
     const [roleIndex, setRoleIndex] = useState(0)
-    const { ref } = useSectionInView("About", 0.3)
+    const { ref } = useSectionInView("About", 0.5)
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -154,9 +155,7 @@ export function About() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => {
-                        document.getElementById("experience")?.scrollIntoView({
-                            behavior: "smooth"
-                        });
+                        scrollToSection("experience");
                     }}
                     className="p-2 rounded-full bg-card/80 hover:bg-accent/80 transition-colors duration-200"
                 >

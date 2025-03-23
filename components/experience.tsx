@@ -67,37 +67,27 @@ function ExperienceCard({ experience, index }: { experience: (typeof experiences
 }
 
 export function Experience() {
-    const { ref } = useSectionInView("Experience", 0.3)
+    const { ref } = useSectionInView("Experience", 0.5)
 
     return (
-        <motion.section
+        <section
             ref={ref}
             id="experience"
-            className="container py-12 mx-auto max-w-[60rem] scroll-mt-28"
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-                duration: 0.5,
-                type: "spring",
-                stiffness: 50,
-                damping: 15
-            }}
+            className="container py-12 mx-auto max-w-[60rem] scroll-mt-28 space-y-8"
         >
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
+                className="text-center space-y-4"
             >
-                <div className="text-center">
-                    <h2 className="text-3xl font-bold tracking-tight">Work Experience</h2>
-                    <p className="text-muted-foreground">
-                        Here&apos;s what I&apos;ve done so far
-                    </p>
-                </div>
+                <h2 className="text-3xl font-bold tracking-tight">Work Experience</h2>
+                <p className="text-muted-foreground">
+                    Here&apos;s what I&apos;ve done so far
+                </p>
             </motion.div>
 
-            <div className="mt-12">
+            <div className="mt-12 min-h-[500px]">
                 <VerticalTimeline lineColor="#e5e7eb">
                     {experiences.map((experience, index) => (
                         <ExperienceCard
@@ -108,6 +98,6 @@ export function Experience() {
                     ))}
                 </VerticalTimeline>
             </div>
-        </motion.section>
+        </section>
     )
 }
