@@ -228,9 +228,9 @@ export const technologies = {
     ],
     libraries: [
         {
-            name: "Pydantic",
-            description: "Data validation and settings management",
-            icon: "/tech/pydantic.png"
+            name: "Three.js",
+            description: "JavaScript 3D library",
+            icon: "/tech/threejs.png"
         },
         {
             name: "Pandas",
