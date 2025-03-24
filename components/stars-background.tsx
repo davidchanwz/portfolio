@@ -55,7 +55,7 @@ function Stars() {
 
 export default function StarsBackground() {
     return (
-        <div className="fixed top-0 left-0 w-full h-screen -z-10 overflow-hidden">
+        <div className="fixed top-0 left-0 w-full h-full -z-10">
             <Canvas camera={{ position: [0, 0, 1] }}>
                 <Stars />
             </Canvas>
