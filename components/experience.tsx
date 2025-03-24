@@ -10,7 +10,8 @@ function ExperienceCard({ experience, index }: { experience: (typeof experiences
     return (
         <VerticalTimelineElement
             contentStyle={{
-                background: "rgba(255, 255, 255, 0.05)",
+                background: "var(--card)",
+                opacity: 0.8,
                 boxShadow: "0 2px 15px rgba(0, 0, 0, 0.05)",
                 border: "1px solid rgba(0, 0, 0, 0.05)",
                 textAlign: "left",
