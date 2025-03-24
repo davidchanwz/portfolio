@@ -18,7 +18,7 @@ export function About() {
         <motion.section
             ref={ref}
             id="about"
-            className="container pt-16 pb-46 sm:pt-32 sm:pb-62 2xl:pt-42 2xl:pb-84 mx-auto scroll-mt-28 relative"
+            className="container pt-16 pb-46 sm:pt-32 sm:pb-62 2xl:pt-42 2xl:pb-92 mx-auto scroll-mt-28 relative"
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -134,7 +134,7 @@ export function About() {
                     repeat: Infinity,
                     repeatType: "reverse"
                 }}
-                className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
+                className="absolute bottom-20 2xl:bottom-40 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
             >
                 <motion.p
                     initial={{ opacity: 0 }}
