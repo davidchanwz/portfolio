@@ -99,10 +99,10 @@ export function Tech() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{
-                            duration: 0.4,
+                            duration: 0.8,
                             type: "spring",
-                            stiffness: 50,
-                            damping: 15
+                            stiffness: 40,
+                            damping: 20
                         }}
                     >
                         Hardware
@@ -112,10 +112,11 @@ export function Tech() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{
-                            duration: 0.4,
+                            duration: 0.8,
+                            delay: 0.2,
                             type: "spring",
-                            stiffness: 50,
-                            damping: 15
+                            stiffness: 40,
+                            damping: 20
                         }}
                     >
                         <MacBookCanvas />
