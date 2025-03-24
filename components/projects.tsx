@@ -101,7 +101,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                     </div>
                 </motion.div>
             </DialogTrigger>
-            <DialogContent className="flex flex-col p-0 h-[70vh] sm:h-[80vh] [&>button]:cursor-pointer">
+            <DialogContent className="flex flex-col p-0 h-[500px] sm:h-[80vh] [&>button]:cursor-pointer">
                 <div className="px-6 py-4 border-b">
                     <DialogHeader>
                         <DialogTitle>{project.title}</DialogTitle>
