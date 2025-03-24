@@ -150,7 +150,7 @@ export function About() {
                     onClick={() => {
                         scrollToSection("experience");
                     }}
-                    className="p-2 rounded-full bg-card/80 hover:bg-accent/80 transition-colors duration-200"
+                    className="p-2 rounded-full bg-card/80 hover:bg-accent/80 transition-colors duration-200 cursor-pointer"
                 >
                     <ArrowDown className="w-6 h-6 text-muted-foreground animate-pulse" />
                 </motion.button>

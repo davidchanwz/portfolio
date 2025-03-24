@@ -17,6 +17,16 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+import { useState } from "react"
 
 emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string);
 
@@ -28,6 +38,11 @@ const formSchema = z.object({
 
 export function Contact() {
     const { ref } = useSectionInView("Contact", 0.5);
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [dialogContent, setDialogContent] = useState({
+        title: "",
+        description: "",
+    });
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -53,9 +68,17 @@ export function Contact() {
             );
 
             form.reset();
-            alert("Thank you for your message. I will get back to you as soon as possible.");
+            setDialogContent({
+                title: "Message Sent",
+                description: "Thank you for your message. I will get back to you as soon as possible.",
+            });
+            setDialogOpen(true);
         } catch (error: any) {
-            alert(`Error sending message: ${error.message || 'Please try again later.'}`);
+            setDialogContent({
+                title: "Error",
+                description: `Error sending message: ${error.message || 'Please try again later.'}`,
+            });
+            setDialogOpen(true);
         }
     }
 
@@ -161,6 +184,20 @@ export function Contact() {
                     </form>
                 </Form>
             </motion.div>
+
+            <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>{dialogContent.title}</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            {dialogContent.description}
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogAction className="cursor-pointer">OK</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </section>
     )
 }
