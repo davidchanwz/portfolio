@@ -10,7 +10,7 @@ const StarsCanvas = dynamic(() => import("@/components/stars-background"), {
 export function StarsWrapper() {
     return (
         <Suspense fallback={null}>
-            <div className="w-full h-auto fixed inset-0 z-[1] backdrop-blur-[1px]">
+            <div className="w-full h-lvh fixed inset-0 z-[1] backdrop-blur-[1px]">
                 <div className="scale-75"> {/* Reduce canvas size */}
                     <StarsCanvas />
                 </div>

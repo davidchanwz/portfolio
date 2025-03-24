@@ -10,7 +10,7 @@ import { Contact } from "@/components/contact"
 
 export default function Home() {
   return (
-    <main className="min-h-screen py-24">
+    <main className="min-h-lvh py-24">
       <About />
       <Experience />
       <Tech />
