@@ -50,12 +50,12 @@ export const projects = [
     {
         title: "CoconutSplit",
         description: "Telegram bot for tracking and splitting shared expenses between friends.",
-        longDescription: "A Splitwise alternative on Telegram. Built with FastAPI and PyTelegramBotAPI, CoconutSplit helps users track and split shared expenses with friends. CoconutSplit is integrated with Supabase for data storage, and Hugging Face for receipt image parsing.",
-        thumbnail: "/projects/coconutsplit.jpg",
-        detailImage: "/projects/coconutsplit-detail.png",
+        longDescription: "A Splitwise alternative on Telegram. Built with FastAPI, PyTelegramBotAPI, Next.js and Supabase, CoconutSplit helps users track and split shared expenses with friends directly on Telegram group chats, reducing the need for installing third-party apps. Through an integrated Mini App, CoconutSplit provides an easy to use interface to add expenses, settle debts, and view all transactions throughout history.",
+        thumbnail: "/projects/coconutsplit.png",
+        detailImage: "/projects/coconutsplit-detail.jpg",
         links: {
             github: "https://github.com/davidchanwz/coconutsplit",
-            demo: "https://coconutsplitbot.com",
+            demo: "https://t.me/coconutsplit_bot",
         },
         iconLists: [
             "/tech/fastapi.svg",
