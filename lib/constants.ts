@@ -63,7 +63,8 @@ export const projects = [
             "/tech/supabase.png",
             "/tech/huggingface.svg",
             "/tech/docker.png",
-            "/tech/heroku.png"
+            "/tech/heroku.png",
+            "/tech/nextjs.png",
         ]
     },
     {
