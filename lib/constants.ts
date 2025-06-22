@@ -22,7 +22,7 @@ export const experiences = [
         ],
     },
     {
-        title: "Risk Analyst Intern",
+        title: "Data Analyst Intern",
         company_name: "China CITIC Bank International",
         icon: "/citic.png",
         iconBg: "#E6DEDD",
