@@ -2,127 +2,160 @@
 
 import { motion } from "framer-motion"
 import { useSectionInView } from "@/lib/hooks"
-import { cn } from "@/lib/utils"
 import { technologies } from "@/lib/constants"
-import { MacBookCanvas } from './macbook-canvas'
+import Image from "next/image"
+import { MacBookCanvas } from "./macbook-canvas"
 
-const TechGrid = ({ title, items }: { title: string, items: typeof technologies.languages }) => (
-    <div className="space-y-4">
-        <motion.h3
-            className="text-lg font-semibold tracking-tight text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-                duration: 0.4,
-                type: "spring",
-                stiffness: 50,
-                damping: 15
-            }}
-        >
-            {title}
-        </motion.h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {items.map((item, index) => (
-                <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                        duration: 0.4,
-                        delay: index * 0.1,
-                        type: "spring",
-                        stiffness: 50,
-                        damping: 15
-                    }}
-                >
-                    <div className="flex h-20 overflow-hidden rounded-lg border bg-card/80 shadow-sm">
-                        <div className="w-20 bg-muted/50 flex items-center justify-center p-4 border-r">
-                            <img
-                                src={item.icon}
-                                alt={item.name}
-                                className={cn(
-                                    "h-10 w-10 object-contain",
-                                    // Add invert filter for next.js and flask logos in dark mode
-                                    (item.name === "Next.js" || item.name === "Flask" || item.name === "FastAPI" || item.name === "SQLAlchemy") && "dark:invert",
-                                    // Add invert filter for vercel logo in light mode
-                                    item.name === "Vercel" && "invert dark:invert-0"
-                                )}
-                            />
-                        </div>
-                        <div className="flex-1 p-3 flex flex-col justify-center">
-                            <h4 className="font-medium text-sm mb-0.5">
-                                {item.name}
-                            </h4>
-                            <p className="text-xs text-muted-foreground">
-                                {item.description}
-                            </p>
-                        </div>
-                    </div>
-                </motion.div>
-            ))}
+interface TechItemProps {
+  name: string
+  icon: string
+  description?: string
+  delay?: number
+}
+
+function TechItem({ name, icon, description, delay = 0 }: TechItemProps) {
+  return (
+    <motion.div
+      className="flex flex-col items-center space-y-3"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      >
+        <div className="w-14 h-14 flex items-center justify-center">
+          {(() => {
+            // List of icons to invert
+            const invertIcons = [
+              "/tech/nextjs.png",
+              "/tech/flask.png",
+              "/tech/fastapi.svg"
+            ];
+            const shouldInvert = invertIcons.includes(icon);
+            const filterClass = shouldInvert ? "filter invert" : "";
+            return (
+              <Image
+                src={icon}
+                alt={name}
+                width={56}
+                height={56}
+                className={`object-contain ${filterClass}`}
+              />
+            );
+          })()}
         </div>
-    </div>
-)
+      </motion.div>
+      <span className="text-sm font-medium text-foreground text-center">
+        {name}
+      </span>
+    </motion.div>
+  )
+}
+
+interface TechCategoryProps {
+  title: string
+  items: { name: string; icon: string; description?: string }[]
+  delay?: number
+}
+
+function TechCategory({ title, items, delay = 0 }: TechCategoryProps) {
+  return (
+    <motion.div
+      className="space-y-6"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      <h3 className="text-xl font-semibold text-foreground text-center mb-6">
+        {title}
+      </h3>
+      <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+        {items.map((item, idx) => (
+          <TechItem
+            key={item.name}
+            name={item.name}
+            icon={item.icon}
+            description={item.description}
+            delay={delay + idx * 0.1}
+          />
+        ))}
+      </div>
+    </motion.div>
+  )
+}
 
 export function Tech() {
-    const { ref } = useSectionInView("Tech", 0.3)
+  const { ref } = useSectionInView("Tech", 0.3)
 
-    return (
-        <section
-            ref={ref}
-            id="tech"
-            className="container py-12 mx-auto max-w-[60rem] scroll-mt-28 space-y-8 "
+  return (
+    <section
+      ref={ref}
+      id="tech"
+      className="container py-20 mx-auto scroll-mt-28 space-y-16"
+    >
+      {/* Section Header */}
+      <motion.div
+        className="text-center space-y-4"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <h2 className="text-3xl font-bold tracking-tight">Tech Stack</h2>
+        <p className="text-lg text-muted-foreground">
+          Technologies I work with
+        </p>
+        <motion.div
+          className="mx-auto w-24 h-1 bg-gradient-to-r from-primary/60 via-primary to-primary/60 rounded-full"
+          initial={{ width: 0 }}
+          whileInView={{ width: 96 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+        />
+      </motion.div>
+
+      {/* Tech Categories */}
+      <TechCategory
+        title="Languages"
+        items={technologies.languages}
+        delay={0.2}
+      />
+      <TechCategory
+        title="Frameworks"
+        items={technologies.frameworks}
+        delay={0.4}
+      />
+      <TechCategory title="Tools" items={technologies.tools} delay={0.6} />
+      <TechCategory
+        title="Libraries"
+        items={technologies.libraries}
+        delay={0.8}
+      />
+
+      {/* Hardware Section */}
+      <motion.div
+        className="space-y-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.0 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <h3 className="text-xl font-semibold text-foreground text-center">
+          Hardware
+        </h3>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          viewport={{ once: true, margin: "-100px" }}
         >
-            <motion.div
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-center space-y-4"
-            >
-                <h2 className="text-3xl font-bold tracking-tight">Tech Stack</h2>
-                <p className="text-muted-foreground">
-                    Technologies I work with
-                </p>
-            </motion.div>
-
-            <div className="space-y-12">
-                <TechGrid title="Languages" items={technologies.languages} />
-                <TechGrid title="Frameworks" items={technologies.frameworks} />
-                <TechGrid title="Tools" items={technologies.tools} />
-                <TechGrid title="Libraries" items={technologies.libraries} />
-                <div className="space-y-4">
-                    <motion.h3
-                        className="text-lg font-semibold tracking-tight text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            duration: 0.8,
-                            type: "spring",
-                            stiffness: 40,
-                            damping: 20
-                        }}
-                    >
-                        Hardware
-                    </motion.h3>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.2,
-                            type: "spring",
-                            stiffness: 40,
-                            damping: 20
-                        }}
-                    >
-                        <MacBookCanvas />
-                    </motion.div>
-                </div>
-            </div>
-        </section>
-    )
+          <MacBookCanvas />
+        </motion.div>
+      </motion.div>
+    </section>
+  )
 }

@@ -217,22 +217,17 @@ export const technologies = {
             icon: "/tech/firebase.png"
         },
         {
-            name: "Vercel",
-            description: "Develop. Preview. Ship.",
-            icon: "/tech/vercel.svg"
-        },
-        {
             name: "Heroku",
             description: "Cloud platform as a service",
             icon: "/tech/heroku.png"
+        },
+        {
+            name: "Nginx",
+            description: "Web server that can also be used as a reverse proxy",
+            icon: "/tech/nginx.png"
         }
     ],
     libraries: [
-        {
-            name: "Three.js",
-            description: "JavaScript 3D library",
-            icon: "/tech/threejs.png"
-        },
         {
             name: "Pandas",
             description: "Data manipulation and analysis",
@@ -242,11 +237,6 @@ export const technologies = {
             name: "Scikit-learn",
             description: "Machine learning library",
             icon: "/tech/sklearn.png"
-        },
-        {
-            name: "Hugging Face Transformers",
-            description: "State-of-the-art Natural Language Processing",
-            icon: "/tech/huggingface.svg"
         },
         {
             name: "SQLAlchemy",
