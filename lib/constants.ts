@@ -4,7 +4,7 @@ export const experiences = [
         company_name: "Synapxe",
         icon: "/synapxe.jpg",
         iconBg: "#ffff",
-        date: "Jun 2025 - Dec 2025",
+        date: "Jun 2025 - Present",
         points: [
             "Fullstack development of advanced healthcare system integrated with computer vision and generative AI, hosted on AWS cloud services.",
             "Implement multi-modal capabilities to enhance user experiences within the healthcare solution.",
@@ -15,7 +15,7 @@ export const experiences = [
         company_name: "NUS Computing",
         icon: "/nus.jpg",
         iconBg: "#ffff",
-        date: "Aug 2024 - Present",
+        date: "Aug 2024 - Aug 2025",
         points: [
             "Teaching support for BT2102 - Data Management and Visualisation.",
             "Teaching support for CP2106 - Independent Software Development Project (Orbital).",
